@@ -190,7 +190,10 @@ export default {
           "https://web3portal.4everland.store/config.json"
         );
         // console.log(data);
-        this.list = data;
+        this.list = data.map(it => {
+          if(!/^http/.test(it.hosting)) it.hosting = 'https://' + it.hosting;
+          return it;
+        });
       } catch (error) {
         console.log(error);
       }
